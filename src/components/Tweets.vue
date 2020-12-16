@@ -1,13 +1,11 @@
 <template>
-<div class="wrapper">
+<div>
 <button class="button is-success" @click="toggleView">Toggle View</button>
   <div id="tweets" :class="{'list-view': listView}">
-    <article class="tweets" v-for="(tweet, index) in tweets" :key="index">
-      <div class="tweet">
+    <article class="tweet" v-for="(tweet, index) in tweets" :key="index">
       <h4>{{ tweet.author }}</h4>
       <h6>{{ tweet.date }}</h6>
       <p>{{ tweet.text }}</p>
-      </div>
     </article>
   </div>
 </div>
@@ -50,7 +48,7 @@ export default {
 <style scoped>
 #tweets {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   grid-gap: 1rem;
   padding: 1rem;
   color: ivory;
@@ -66,7 +64,7 @@ article {
   background-color: #2c5035;
 }
 
-.tweets {
+#tweets {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
@@ -81,14 +79,9 @@ article {
 }
 
 @media screen and (max-width: 991px) {
-  .tweets .tweet {
-    margin-bottom: 5px;
-    flex-basis: 40%;
-  }
-  .tweets .tweet:last-child {
-    margin-bottom: 5px;
-    flex-basis: 100%;
-    margin: 0;
+  #tweets {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
   }
  }
 </style>
