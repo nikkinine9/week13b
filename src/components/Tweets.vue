@@ -1,5 +1,6 @@
 <template>
-<div>
+<div class="tweet">
+  <br>
 <button class="button is-success" @click="toggleView">Toggle View</button>
   <div id="tweets" :class="{'list-view': listView}">
     <article class="tweet" v-for="(tweet, index) in tweets" :key="index">
@@ -40,7 +41,12 @@ export default {
   methods: {
     toggleView(){
       this.listView = !this.listView;
-     }
+      if(this.listView == true){
+        document.querySelector('button').innerText = "List View";
+      }else{
+        document.querySelector('button').innerText = "Grid View";
+           }
+    }
   }
 }
 </script>
@@ -62,21 +68,10 @@ article {
   padding: 1rem;
   margin: 1rem;
   background-color: #2c5035;
+   border: 3px solid black;
 }
 
-#tweets {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
-  margin: 5px 0;
-}
 
-.tweet {
-  flex: 1;
-  border: 1px solid black;
-  margin: 2px;
-  padding: 10px;
-}
 
 @media screen and (max-width: 991px) {
   #tweets {
